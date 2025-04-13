@@ -6,28 +6,33 @@ function Crear({crearReceta,visible, setFormVisible}) {
     let [textoIngredientes,setTextoIngredientes] = useState("")
     let [textoElaboracion,setTextoElaboracion] = useState("")
     let [categoria,setCategoria] = useState("")
+    let [imagen, setImagen] = useState(null);
     let [msgError,setMsgError] = useState("No se ha podido crear la receta. Vuelve a intentarlo")
     let [error,setError] = useState(false)
  
   return (
     <>
        
-        <form className={`formReceta ${visible ? "visible" : ""}`} onSubmit={ evento => {
+        <form className={`formReceta ${visible ? "visible" : ""}`} encType="multipart/form-data" onSubmit={ evento => {
             evento.preventDefault()
 
             if(textoInput.trim() != ""){
                 
-                fetch("http://localhost:4000/recetas/nueva",{
-                    method : "POST",
-                    body : JSON.stringify({receta: textoInput.trim(), ingredientes: textoIngredientes.trim(), elaboracion:textoElaboracion.trim(), img:"/ensalada mediterranea.png", categoria: categoria}),
-                    headers : {
-                        "Content-type" : "application/json"
-                    }
+                const formData = new FormData();
+                formData.append("receta", textoInput.trim());
+                formData.append("ingredientes", textoIngredientes.trim());
+                formData.append("elaboracion", textoElaboracion.trim());
+                formData.append("categoria", categoria);
+                formData.append("img", imagen);
+          
+                fetch("http://localhost:4000/recetas/nueva", {
+                  method: "POST",
+                  body: formData,
                 })
                 .then(respuesta => respuesta.json())
-                .then(({id,error}) => {
+                .then(({id,img,error}) => {
                     if(!error){
-                        crearReceta({id, receta: textoInput.trim(), ingredientes: textoIngredientes.trim(), elaboracion:textoElaboracion.trim(), img:"/ensalada mediterranea.png", categoria: categoria })
+                        crearReceta({id, receta: textoInput.trim(), ingredientes: textoIngredientes.trim(), elaboracion:textoElaboracion.trim(), img: img || "/uploads/default.png", categoria: categoria })
                         
                         setTextoInput("")
                         setTextoIngredientes("")
@@ -46,7 +51,7 @@ function Crear({crearReceta,visible, setFormVisible}) {
                 });
             }
         }}>
-            <h1 className="nuevaReceta">Nueva Receta 🍅</h1>
+            <h1 className="nuevaRecetaH1">Nueva Receta 🍅</h1>
             <label>Título:</label>
             <input type="text" name="titulo" value={textoInput} onChange={ evento => setTextoInput(evento.target.value)} required />
 
@@ -57,11 +62,11 @@ function Crear({crearReceta,visible, setFormVisible}) {
             <textarea name="elaboracion" value={textoElaboracion} onChange={ evento => setTextoElaboracion(evento.target.value)} rows="5" required></textarea>
 
             <label>Imagen:</label>
-            <input type="file" name="imagen" accept="image/*" />
+            <input type="file" name="imagen" accept="image/*" onChange={(evento) => setImagen(evento.target.files[0])} />
 
             <label>Categoría:</label>
             <select name="categoria" value={categoria} onChange={ evento => setCategoria(evento.target.value)} required>
-                <option value="">-- Selecciona una categoría --</option>
+                <option hidden value="">-- Selecciona una categoría --</option>
                 <option value="🥩Carne">🥩Carne</option>
                 <option value="🐟Pescado">🐟Pescado</option>
                 <option value="🥦Vegetariano">🥦Vegetariano</option>

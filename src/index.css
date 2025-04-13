@@ -4,7 +4,6 @@
 }
 
 
-
 body {
     font-family: 'Patrick Hand', cursive;
     background-color: #f4ede0;
@@ -40,7 +39,7 @@ h1.titulo {
 
 /* Formulario nueva receta */
 
-.nuevaReceta{
+.nuevaRecetaH1{
     text-align: right;
     margin: 10px 0;
 }
@@ -213,10 +212,11 @@ h1.titulo {
 }
 
 .receta img {
-    width: 100%;
-    border-radius: 0.75rem;
-    margin: 1rem 0;
-    border: 1px solid #e0cdb8;
+  width: 100%;
+  border-radius: 0.75rem;
+  margin: 1rem 0;
+  border: 1px solid #e0cdb8;
+  max-height: 700px;
 }
 
 .receta p{
