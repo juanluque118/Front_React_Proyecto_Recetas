@@ -36,6 +36,48 @@ h1.titulo {
     background-color: #5e371d;
     transform: scale(1.20);
 }
+/* Formulario Login */
+
+.login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 70vh;
+}
+
+.login form{
+  display: contents;
+}
+
+.login h1{
+  margin-bottom: 10px;
+}
+
+.login button{
+  margin-top: 10px;
+}
+
+.login label{
+  font-size: 1.5rem;
+}
+
+.loginError{
+  font-size: 1.3rem;
+  color: #c00;
+  margin-top: 10px;
+}
+
+.cerrarSesion{
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  font-size: 1.3rem;
+}
+
+.cerrarSesion:hover{
+  color: red;
+}
 
 /* Formulario nueva receta */
 

@@ -28,6 +28,7 @@ function Crear({crearReceta,visible, setFormVisible}) {
                 fetch("http://localhost:4000/recetas/nueva", {
                   method: "POST",
                   body: formData,
+                  credentials : 'include',
                 })
                 .then(respuesta => respuesta.json())
                 .then(({id,img,error}) => {
