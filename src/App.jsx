@@ -53,7 +53,7 @@ function App({ usuarioLogueado, setUsuarioLogueado }) {
         </button>
         <button className={`filtro ${categoriaSeleccionada == "todas" ? "activo" : ""}`} 
                 onClick={() => setCategoriaSeleccionada("todas")}
-        ><span className='letras'>TODAS</span><span className="emoji">🍽️</span>
+        ><span className='letras'>Todas</span><span className="emoji">🍽️</span>
         </button>
         <button className={`filtro ${categoriaSeleccionada == "carne" ? "activo" : ""}`} 
                 onClick={() => setCategoriaSeleccionada("carne")}
