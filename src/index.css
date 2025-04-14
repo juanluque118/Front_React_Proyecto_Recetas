@@ -139,9 +139,15 @@ h1.titulo {
 .formReceta button:hover {
     background-color:#5e371d;
 }
-
-/*Botones para filtrar las recetas*/
- /* Estilos generales para los botones */
+/* Estilo del contenedor para los botones de filtrar */
+.filtros {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 40px;
+}
+/*Botones filtrar*/
  .filtro {
     padding: 10px 20px;
     font-size: 16px;
@@ -151,72 +157,25 @@ h1.titulo {
     border-radius: 5px;
     transition: background-color 0.3s ease, transform 0.3s ease;
     box-shadow: 0 0 12px 3px rgb(0 0 0 / 33%);
-  }
-
-  /* Estilos para cada categoría */
-  .todas {
-    background-color: #7b4a25;
-    color: white;
-  }
-
-  .todas:hover {
-    background-color: #ccb59e;
-    transform: scale(1.05);
-    color: black;
-  }
-
-  .carne {
     background-color: #ccb59e;
     color: black;
   }
-
-  .carne:hover {
+  .filtro:hover{
     background-color: #7b4a25;
     transform: scale(1.05);
     color: white;
   }
 
-  .pescado {
-    background-color: #ccb59e;
-    color: black;
-  }
-
-  .pescado:hover {
+  .filtro.activo {
     background-color: #7b4a25;
-    transform: scale(1.05);
     color: white;
+    font-weight: bold;
   }
 
-  .vegetariano {
-    background-color: #ccb59e;
-    color: black;
+  .emoji{
+    font-size: 1.7rem;
   }
 
-  .vegetariano:hover {
-    background-color: #7b4a25;
-    transform: scale(1.05);
-    color: white;
-  }
-
-  .postres {
-    background-color: #ccb59e;
-    color: black;
-  }
-
-  .postres:hover {
-    background-color: #7b4a25;
-    transform: scale(1.05);
-    color: white;
-  }
-
-  /* Estilo del contenedor para los botones */
-  .filtros {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    justify-content: center;
-    margin-top: 40px;
-  }
 
 /* Recetas */
 
@@ -385,8 +344,8 @@ h1.titulo {
 
   /*Media Query*/
 
-@media screen and (max-width: 800px){
-    .filtros span{
+@media screen and (max-width: 850px){
+    span.letras{
         display: none;
     }
 }

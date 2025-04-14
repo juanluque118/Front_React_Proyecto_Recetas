@@ -7,17 +7,23 @@ function App({ usuarioLogueado, setUsuarioLogueado }) {
   const [recetas, setRecetas] = useState([]);
   const [formVisible, setFormVisible] = useState(false);
   const [cargando, setCargando] = useState(true);
+  const [categoriaSeleccionada, setCategoriaSeleccionada] = useState("todas");
+
 
   useEffect(() => {
     if (usuarioLogueado) {
-      fetch("http://localhost:4000/recetas", {credentials : 'include'})
+      const url = categoriaSeleccionada == "todas"
+        ? "http://localhost:4000/recetas" 
+        : `http://localhost:4000/recetas?categoria=${categoriaSeleccionada}`;
+
+      fetch(url, { credentials: 'include' })
         .then((respuesta) => respuesta.json())
         .then((recetas) => {
           setRecetas(recetas);
           setCargando(false);
         });
     }
-  }, [usuarioLogueado]);
+  }, [usuarioLogueado, categoriaSeleccionada]);
 
   function crearReceta(receta) {
     setRecetas([...recetas, receta]);
@@ -45,21 +51,27 @@ function App({ usuarioLogueado, setUsuarioLogueado }) {
         <button className="botonCrear" onClick={() => setFormVisible(!formVisible)}>
           +
         </button>
-        <button className="filtro todas">
-          <span>TODAS</span>🍽️
+        <button className={`filtro ${categoriaSeleccionada == "todas" ? "activo" : ""}`} 
+                onClick={() => setCategoriaSeleccionada("todas")}
+        ><span className='letras'>TODAS</span><span className="emoji">🍽️</span>
         </button>
-        <button className="filtro carne">
-          <span>Carne</span>🥩
+        <button className={`filtro ${categoriaSeleccionada == "carne" ? "activo" : ""}`} 
+                onClick={() => setCategoriaSeleccionada("carne")}
+        ><span className='letras'>Carne</span><span className="emoji">🥩</span>
         </button>
-        <button className="filtro pescado">
-          <span>Pescado</span>🐟
+        <button className={`filtro ${categoriaSeleccionada == "pescado" ? "activo" : ""}`} 
+                onClick={() => setCategoriaSeleccionada("pescado")}
+        ><span className='letras'>Pescado</span><span className="emoji">🐟</span>
         </button>
-        <button className="filtro vegetariano">
-          <span>Vegetariano</span>🥦
+        <button className={`filtro ${categoriaSeleccionada == "vegetariano" ? "activo" : ""}`} 
+                onClick={() => setCategoriaSeleccionada("vegetariano")}
+        ><span className='letras'>Vegetariano</span><span className="emoji">🥦</span>
         </button>
-        <button className="filtro postres">
-          <span>Postres</span>🍪
+        <button className={`filtro ${categoriaSeleccionada == "postres" ? "activo" : ""}`} 
+                onClick={() => setCategoriaSeleccionada("postres")}
+        ><span className='letras'>Postres</span><span className="emoji">🍪</span>
         </button>
+
       </div>
 
       <Crear crearReceta={crearReceta} visible={formVisible} setFormVisible={setFormVisible} />

@@ -68,10 +68,10 @@ function Crear({crearReceta,visible, setFormVisible}) {
             <label>Categoría:</label>
             <select name="categoria" value={categoria} onChange={ evento => setCategoria(evento.target.value)} required>
                 <option hidden value="">-- Selecciona una categoría --</option>
-                <option value="🥩Carne">🥩Carne</option>
-                <option value="🐟Pescado">🐟Pescado</option>
-                <option value="🥦Vegetariano">🥦Vegetariano</option>
-                <option value="🍪Postres">🍪Postres</option>
+                <option value="carne">🥩Carne</option>
+                <option value="pescado">🐟Pescado</option>
+                <option value="vegetariano">🥦Vegetariano</option>
+                <option value="postres">🍪Postres</option>
             </select>
 
             
