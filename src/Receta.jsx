@@ -33,20 +33,13 @@ function Receta({id,receta,ingredientes,elaboracion,img,categoria,borrarReceta,e
         <img src={`http://localhost:4000${imgTemporal}`} alt={receta} />
         <input className={ editando ? "visible" : "" } type="file" name="imagen" accept="image/*" onChange={(evento) => setNuevaImagen(evento.target.files[0])} />
 
-        <p className= { !editando ? "categoria visible" : "categoria" }><strong>Categoría: </strong>{ 
-            {
-            carne: "🥩 Carne",
-            pescado: "🐟 Pescado",
-            vegetariano: "🥦 Vegetariano",
-            postres: "🍪 Postres"
-            }[categoria] || categoria
-        }</p>
+        <p className= { !editando ? "categoria visible" : "categoria" }><strong>Categoría: </strong>{ categoria }</p>
         <select className={ editando ? "visible" : "" } name="categoria" value={categoriaTemporal} onChange={ evento => setCategoriaTemporal(evento.target.value) } required>
-            <option hidden value="">-- Selecciona una categoría --</option>
-            <option value="carne">🥩 Carne</option>
-            <option value="pescado">🐟 Pescado</option>
-            <option value="vegetariano">🥦 Vegetariano</option>
-            <option value="postres">🍪 Postres</option>
+                <option hidden value="">-- Selecciona una categoría --</option>
+                <option value="🥩Carne">🥩Carne</option>
+                <option value="🐟Pescado">🐟Pescado</option>
+                <option value="🥦Vegetariano">🥦Vegetariano</option>
+                <option value="🍪Postres">🍪Postres</option>
         </select>
 
         <div className="botones">
