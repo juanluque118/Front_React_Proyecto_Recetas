@@ -7,6 +7,7 @@ function App({ usuarioLogueado, setUsuarioLogueado }) {
   const [recetas, setRecetas] = useState([]);
   const [formVisible, setFormVisible] = useState(false);
   const [cargando, setCargando] = useState(true);
+  const [categoriaSeleccionada, setCategoriaSeleccionada] = useState("todas");
 
   useEffect(() => {
     if (usuarioLogueado) {
@@ -45,20 +46,25 @@ function App({ usuarioLogueado, setUsuarioLogueado }) {
         <button className="botonCrear" onClick={() => setFormVisible(!formVisible)}>
           +
         </button>
-        <button className="filtro todas">
-          <span>TODAS</span>🍽️
+        <button className={`filtro ${categoriaSeleccionada == "todas" ? "activo" : ""}`} 
+                onClick={() => setCategoriaSeleccionada("todas")}
+        ><span className='letras'>Todas</span><span className="emoji">🍽️</span>
         </button>
-        <button className="filtro carne">
-          <span>Carne</span>🥩
+        <button className={`filtro ${categoriaSeleccionada == "carne" ? "activo" : ""}`} 
+                onClick={() => setCategoriaSeleccionada("carne")}
+        ><span className='letras'>Carne</span><span className="emoji">🥩</span>
         </button>
-        <button className="filtro pescado">
-          <span>Pescado</span>🐟
+        <button className={`filtro ${categoriaSeleccionada == "pescado" ? "activo" : ""}`} 
+                onClick={() => setCategoriaSeleccionada("pescado")}
+        ><span className='letras'>Pescado</span><span className="emoji">🐟</span>
         </button>
-        <button className="filtro vegetariano">
-          <span>Vegetariano</span>🥦
+        <button className={`filtro ${categoriaSeleccionada == "vegetariano" ? "activo" : ""}`} 
+                onClick={() => setCategoriaSeleccionada("vegetariano")}
+        ><span className='letras'>Vegetariano</span><span className="emoji">🥦</span>
         </button>
-        <button className="filtro postres">
-          <span>Postres</span>🍪
+        <button className={`filtro ${categoriaSeleccionada == "postres" ? "activo" : ""}`} 
+                onClick={() => setCategoriaSeleccionada("postres")}
+        ><span className='letras'>Postres</span><span className="emoji">🍪</span>
         </button>
       </div>
 
@@ -68,19 +74,24 @@ function App({ usuarioLogueado, setUsuarioLogueado }) {
         <p className="cargando"> Cocinando...🍳</p>
       ) : (
         <section className="recetas">
-          {recetas.map(({ id, receta, ingredientes, elaboracion, img, categoria }) => (
-            <Receta
-              key={id}
-              id={id}
-              receta={receta}
-              ingredientes={ingredientes}
-              elaboracion={elaboracion}
-              img={img}
-              categoria={categoria}
-              borrarReceta={borrarReceta}
-              editarReceta={editarReceta}
-            />
-          ))}
+          {recetas
+            .filter(({ categoria }) =>
+              categoriaSeleccionada == "todas" ? true : categoria.toLowerCase().includes(categoriaSeleccionada)
+            )
+            .sort((a, b) => a.receta.localeCompare(b.receta))
+            .map(({ id, receta, ingredientes, elaboracion, img, categoria }) => (
+              <Receta
+                key={id}
+                id={id}
+                receta={receta}
+                ingredientes={ingredientes}
+                elaboracion={elaboracion}
+                img={img}
+                categoria={categoria}
+                borrarReceta={borrarReceta}
+                editarReceta={editarReceta}
+              />
+            ))}
         </section>
       )}
 
