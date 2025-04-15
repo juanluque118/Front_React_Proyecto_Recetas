@@ -95,16 +95,15 @@ function App({ usuarioLogueado, setUsuarioLogueado }) {
         </section>
       )}
 
-      <Link
-        to="/login"
-        className="cerrarSesion"
-        onClick={async () => {
-          await fetch('http://localhost:4000/logout', { method: 'POST', credentials: 'include' });
-          setUsuarioLogueado(null);
-        }}
-      >
-        Cerrar sesión
-      </Link>
+          <button
+            className="cerrarSesion"
+            onClick={async () => {
+              await fetch('http://localhost:4000/logout', { method: 'POST', credentials: 'include' });
+              setUsuarioLogueado(null);
+            }}
+          >
+            Cerrar sesión
+          </button>
     </div>
   );
 }
