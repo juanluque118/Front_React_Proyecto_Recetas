@@ -11,6 +11,8 @@ function Receta({id,receta,ingredientes,elaboracion,img,categoria,borrarReceta,e
     let [msgError,setMsgError] = useState("")
     let [error,setError] = useState(false)
     let [nuevaImagen, setNuevaImagen] = useState(null)
+    let [confirmarBorrado, setConfirmarBorrado] = useState(false);
+
 
     useEffect(() => {
         setImgTemporal(img);
@@ -110,20 +112,32 @@ function Receta({id,receta,ingredientes,elaboracion,img,categoria,borrarReceta,e
             }} >
                 { editando ? <i className="fas fa-save"></i> : <i className="fas fa-edit"></i> }
             </button>
-            <button className="boton borrar" onClick={ () => {
-                fetch("http://localhost:4000/recetas/borrar/" + id,{
-                    method : "DELETE"
-                })
-                .then(({status}) => {
-                    if(status == 204){
-                        return borrarReceta(id)
-                    }
-                    setMsgError("No se pudo borrar")
-                    setError(true)
-                })
-            } }>
-                <i className="fas fa-trash-alt"></i>
-            </button>
+
+            {confirmarBorrado ? (
+        <div className="confirmarBorrar">
+            <span>¿Borrar ésta receta?</span>
+            <button className="boton" onClick={() => {
+            fetch("http://localhost:4000/recetas/borrar/" + id, {
+                method: "DELETE"
+            })
+                .then(({ status }) => {
+                if (status == 204) {
+                    borrarReceta(id);
+                } else {
+                    setMsgError("No se pudo borrar");
+                    setError(true);
+                }
+                });
+            }}>✅ Sí</button>
+
+            <button className="boton" onClick={() => setConfirmarBorrado(false)}>❌ No</button>
+        </div>
+        ) : (
+        <button className="boton borrar" onClick={() => setConfirmarBorrado(true)}>
+            <i className="fas fa-trash-alt"></i>
+        </button>
+        )}
+
         </div>
         <p className={ `error ${error ? "visible" : "" }` }>{ msgError }</p>
     </div>
