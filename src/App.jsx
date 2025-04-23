@@ -10,7 +10,7 @@ function App({ usuarioLogueado, setUsuarioLogueado }) {
 
   useEffect(() => {
     if (usuarioLogueado) {
-      fetch("http://localhost:4000/recetas", {credentials : 'include'})
+      fetch("https://proyectorecetas.onrender.com/recetas", {credentials : 'include'})
         .then((respuesta) => respuesta.json())
         .then((recetas) => {
           setRecetas(recetas);
@@ -100,7 +100,7 @@ function App({ usuarioLogueado, setUsuarioLogueado }) {
           <button
             className="cerrarSesion"
             onClick={async () => {
-              await fetch('http://localhost:4000/logout', { method: 'POST', credentials: 'include' });
+              await fetch('https://proyectorecetas.onrender.com/logout', { method: 'POST', credentials: 'include' });
               setUsuarioLogueado(null);
             }}
           >

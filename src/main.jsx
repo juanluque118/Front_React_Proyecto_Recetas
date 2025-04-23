@@ -10,7 +10,7 @@ function Main() {
   const [cargando, setCargando] = useState(true);
 
   useEffect(() => {
-    fetch('http://localhost:4000/usuario', { credentials: 'include' })
+    fetch('https://proyectorecetas.onrender.com/usuario', { credentials: 'include' })
       .then(respuesta => respuesta.ok ? respuesta.json() : null)
       .then(data => {
         if (data?.usuario) {

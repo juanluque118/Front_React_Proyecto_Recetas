@@ -19,7 +19,7 @@ function Login({ setUsuarioLogueado, usuarioLogueado }) {
       <form onSubmit={async (evento) => {
         evento.preventDefault();
 
-        const respuesta = await fetch('http://localhost:4000/login', {
+        const respuesta = await fetch('https://proyectorecetas.onrender.com/login', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ usuario, contraseña }),

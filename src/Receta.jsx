@@ -32,7 +32,7 @@ function Receta({id,receta,ingredientes,elaboracion,img,categoria,borrarReceta,e
         <p className={ !editando ? "visible" : "" }>{ elaboracion }</p>
         <textarea className={ editando ? "visible" : "" } name="elaboracion" rows="5" value={elaboracionTemporal} onChange={ evento => setElaboracionTemporal(evento.target.value) } required></textarea>
 
-        <img src={`http://localhost:4000${imgTemporal}`} alt={receta} />
+        <img src={`https://proyectorecetas.onrender.com${imgTemporal}`} alt={receta} />
         <input className={ editando ? "visible" : "" } type="file" name="imagen" accept="image/*" onChange={(evento) => setNuevaImagen(evento.target.files[0])} />
 
         <p className= { !editando ? "categoria visible" : "categoria" }><strong>Categoría: </strong>{ categoria }</p>
@@ -61,7 +61,7 @@ function Receta({id,receta,ingredientes,elaboracion,img,categoria,borrarReceta,e
                             formData.append("img", imgTemporal);
                         }
                     
-                    let respuesta = await fetch("http://localhost:4000/recetas/editar/" + id,{
+                    let respuesta = await fetch("https://proyectorecetas.onrender.com/recetas/editar/" + id,{
                         method : "PUT",
                         body : formData
                     });
@@ -117,7 +117,7 @@ function Receta({id,receta,ingredientes,elaboracion,img,categoria,borrarReceta,e
         <div className="confirmarBorrar">
             <span>¿Borrar ésta receta?</span>
             <button className="boton" onClick={() => {
-            fetch("http://localhost:4000/recetas/borrar/" + id, {
+            fetch("https://proyectorecetas.onrender.com/recetas/borrar/" + id, {
                 method: "DELETE"
             })
                 .then(({ status }) => {

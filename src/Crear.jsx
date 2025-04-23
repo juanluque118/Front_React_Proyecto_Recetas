@@ -25,7 +25,7 @@ function Crear({crearReceta,visible, setFormVisible}) {
                 formData.append("categoria", categoria);
                 formData.append("img", imagen);
           
-                fetch("http://localhost:4000/recetas/nueva", {
+                fetch("https://proyectorecetas.onrender.com/recetas/nueva", {
                   method: "POST",
                   body: formData,
                   credentials : 'include',
