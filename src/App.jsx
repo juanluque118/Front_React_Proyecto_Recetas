@@ -104,7 +104,7 @@ function App({ usuarioLogueado, setUsuarioLogueado }) {
               setUsuarioLogueado(null);
             }}
           >
-           <i class="fas fa-power-off"></i>
+           <i className="fas fa-power-off"></i>
            <span className='mensajeCerrar'>Cerrar sesión</span>
           </button>
           
