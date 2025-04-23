@@ -41,10 +41,13 @@ function App({ usuarioLogueado, setUsuarioLogueado }) {
   return (
     <div>
       <h1 className="titulo">La cocina de {usuarioLogueado}</h1>
-      <div className="filtros">
-        <button className="botonCrear" onClick={() => setFormVisible(!formVisible)}>
+       <button className="botonCrear" onClick={() => setFormVisible(!formVisible)}>
           +
+          <span className='mensajeCrear'>Crear</span>
         </button>
+        
+      <div className="filtros">
+       
         <button className={`filtro ${categoriaSeleccionada == "todas" ? "activo" : ""}`} 
                 onClick={() => setCategoriaSeleccionada("todas")}
         ><span className='letras'>Todas</span><span className="emoji">🍽️</span>
@@ -101,8 +104,10 @@ function App({ usuarioLogueado, setUsuarioLogueado }) {
               setUsuarioLogueado(null);
             }}
           >
-            Cerrar sesión
+           <i class="fas fa-power-off"></i>
+           <span className='mensajeCerrar'>Cerrar sesión</span>
           </button>
+          
     </div>
   );
 }

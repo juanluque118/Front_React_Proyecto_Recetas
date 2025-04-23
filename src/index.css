@@ -3,20 +3,20 @@
   padding: 0;
 }
 
-
 body {
   font-family: 'Patrick Hand', cursive;
   background-color: #f4ede0;
   color: #3e2d1c;
   background-image: url('https://www.transparenttextures.com/patterns/wood-pattern.png'); 
 }
+
 /*Título principal*/
 h1.titulo {
   text-align: center;
   color: #7b4a25;
   font-family: 'Amatic SC', cursive;
   font-size: 4rem;
-  margin: 2rem 0 1rem;
+  margin: 3rem 0 1rem;
   letter-spacing: 2px;
 }
 
@@ -26,11 +26,14 @@ h1.titulo {
   color: white;
   border: none;
   border-radius: 50%;
-  width: 3.5rem;
-  height: 3.5rem;
+  width: 3rem;
+  height: 3rem;
   font-size: 2rem;
   cursor: pointer;
   box-shadow: 0 0 12px 3px rgb(0 0 0 / 33%);
+  position: absolute;
+  left: 15px;
+  top: 10px;
 }
 .botonCrear:hover{
   background-color: #5e371d;
@@ -55,8 +58,19 @@ margin-bottom: 10px;
 }
 
 .login button{
-margin-top: 10px;
-padding: 6px;
+  margin-top: 10px;
+  padding: 6px;
+  border-radius: 10px;
+  background-color: #7b4a25;
+  color: white;
+  width: 120px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.login button:hover{
+  background-color: #d1b08a;
+  color: #5e371d;
 }
 
 .login label{
@@ -79,12 +93,40 @@ margin-top: 10px;
   font-family: 'Patrick Hand';
   padding: 3px 10px;
   border-radius: 10px;
+  border: none;
 }
 
 .cerrarSesion:hover{
   background-color: #d1b08a;
   color: #5e371d;
   box-shadow: inset 0 2px 4px #5e371d;
+}
+
+.mensajeCrear{
+  position: absolute;
+  display: none;
+  top: 45px;
+  left: 0px;
+  font-size: 1.5rem;
+  font-family: 'Patrick Hand';
+  color: #7b4a25;
+  text-decoration: underline;
+}
+
+.mensajeCerrar{
+  position: absolute;
+  display: none;
+  top: 30px;
+  right: -8px;
+  font-size: 1.5rem;
+  font-family: 'Patrick Hand'; 
+  color: #7b4a25;
+  text-decoration: underline;
+}
+
+.botonCrear:hover .mensajeCrear,
+.cerrarSesion:hover .mensajeCerrar {
+  display: block;
 }
 
 /* Formulario nueva receta */
@@ -126,6 +168,10 @@ margin-top: 10px;
   font-family: 'Patrick Hand', cursive;
 }
 
+strong{
+  text-decoration: underline;
+}
+
 .formReceta input[type="text"]{
   font-family: 'Amatic SC', cursive;
   font-size: 2rem;
@@ -149,7 +195,6 @@ margin-top: 10px;
 /* Estilo del contenedor para los botones de filtrar */
 .filtros {
 display: flex;
-flex-wrap: wrap;
 gap: 15px;
 justify-content: center;
 margin-top: 40px;
@@ -166,7 +211,7 @@ margin-top: 40px;
   transition: background-color 0.3s ease, transform 0.3s ease;
   box-shadow: 0 0 12px 3px rgb(0 0 0 / 33%);
   background-color: #ccb59e;
-  color: black;
+  color: #5e371d;
 }
 .filtro:hover{
   background-color: #7b4a25;
@@ -217,6 +262,7 @@ margin-top: 40px;
 .receta h3 {
   font-size: 1.4rem;
   color: #5f3f2e;
+  text-decoration: underline;
 }
 
 .receta img {
@@ -242,7 +288,7 @@ max-height: 700px;
 .receta textarea,
 .receta input,
 .receta select{
-  width: 95%;
+  width: 88%;
   padding: 0.75rem;
   border: 1px solid #ccb59e;
   border-radius: 0.5rem;
@@ -252,9 +298,6 @@ max-height: 700px;
   background-color: white;
 }
 
-.receta select{
-  width: 250px;
-}
 
 .receta input[type="text"]{
   font-family: 'Amatic SC', cursive;
@@ -369,6 +412,38 @@ max-height: 700px;
 
 @media screen and (max-width: 850px){
   span.letras{
-      display: none;
+    display: none;
+  }
+
+  .formReceta{
+    width: 75%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .filtros {
+    box-shadow: none;
+    gap: 10px;
+    padding: 0 1rem;
+  }
+
+  h1.titulo {
+    margin: 6.5rem 0 1rem;
+  }
+}
+
+@media screen and (max-width: 460px) {
+  .filtro {
+    font-size: 16px;
+    padding: 4%;
+  }
+
+.emoji {
+    font-size: 1.3rem;
+  }
+  
+  .botones{
+    justify-content: space-between;
+    flex-direction: column;
   }
 }
