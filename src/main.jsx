@@ -1,6 +1,6 @@
 import { StrictMode, useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { HashRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import App from "./App";
 import Login from "./Login";
 import './index.css';
@@ -25,7 +25,7 @@ function Main() {
 
   return (
     <StrictMode>
-      <BrowserRouter>
+      <Router>
         <Routes>
           <Route path="/login" element={<Login setUsuarioLogueado={setUsuarioLogueado} usuarioLogueado={usuarioLogueado} />} />
 
@@ -34,7 +34,7 @@ function Main() {
           <Route path="/" element={usuarioLogueado ? <App usuarioLogueado={usuarioLogueado} setUsuarioLogueado={setUsuarioLogueado} /> : <Navigate to="/login" />} />
 
         </Routes>
-      </BrowserRouter>
+      </Router>
     </StrictMode>
   );
 }
