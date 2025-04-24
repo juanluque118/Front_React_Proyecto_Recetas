@@ -18,7 +18,7 @@ function Login({ setUsuarioLogueado, usuarioLogueado }) {
       <h1 className='titulo'>La cocina de {usuario || '...'}</h1>
       <form onSubmit={async (evento) => {
         evento.preventDefault();
-
+//Aqui he hecho que el usuario lo envie al backend en minuscula para acceder mas rapido desde el movil ya que por defecto me va a escribir la primera en mayuscula
         const respuesta = await fetch('https://proyectorecetas.onrender.com/login', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },

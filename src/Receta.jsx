@@ -32,7 +32,7 @@ function Receta({id,receta,ingredientes,elaboracion,img,categoria,borrarReceta,e
         <p className={ !editando ? "visible" : "" }>{ elaboracion }</p>
         <textarea className={ editando ? "visible" : "" } name="elaboracion" rows="5" value={elaboracionTemporal} onChange={ evento => setElaboracionTemporal(evento.target.value) } required></textarea>
 
-        <img src={`https://proyectorecetas.onrender.com${imgTemporal}`} alt={receta} />
+        <img src={imgTemporal} alt={receta} />
         <input className={ editando ? "visible" : "" } type="file" name="imagen" accept="image/*" onChange={(evento) => setNuevaImagen(evento.target.files[0])} />
 
         <p className= { !editando ? "categoria visible" : "categoria" }><strong>Categoría: </strong>{ categoria }</p>
