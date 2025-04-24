@@ -348,7 +348,6 @@ max-height: 700px;
 .editar:hover,
 .borrar:hover {
   background-color: #5e371d;
-  transform: scale(1.20);
 }
 
 .botones {
