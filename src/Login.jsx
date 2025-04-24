@@ -22,7 +22,7 @@ function Login({ setUsuarioLogueado, usuarioLogueado }) {
         const respuesta = await fetch('https://proyectorecetas.onrender.com/login', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ usuario, contraseña }),
+          body: JSON.stringify({ usuario: usuario.toLocaleLowerCase(), contraseña }),
           credentials: 'include'
         });
 
