@@ -28,7 +28,7 @@ function Login({ setUsuarioLogueado, usuarioLogueado }) {
 
         if (respuesta.ok) {
           setUsuarioLogueado(usuario);
-          navigate('/recetas');
+          window.location.href = "/recetas"; // 👈 Esto forza una recarga real con cookies incluidas
         } else {
           const data = await respuesta.json();
           setMensajeError(data.error || 'Error en login');
