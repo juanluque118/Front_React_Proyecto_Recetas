@@ -194,10 +194,10 @@ strong{
 }
 /* Estilo del contenedor para los botones de filtrar */
 .filtros {
-display: flex;
-gap: 15px;
-justify-content: center;
-margin-top: 40px;
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 40px;
 }
 /*Botones filtrar*/
 .filtro {
@@ -316,6 +316,14 @@ margin-top: 40px;
   font-size: 3rem;
   animation: cargando 1.5s infinite;
   margin-top: 40px;
+}
+
+.abriendoCocina{
+  text-align: center;
+  color: #3e2d1c;
+  font-size: 2rem;
+  margin-top: 15px;
+  animation: cargando 1.5s infinite;
 }
 
 .error{

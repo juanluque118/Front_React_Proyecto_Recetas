@@ -9,10 +9,12 @@ function Main() {
   const [usuarioLogueado, setUsuarioLogueado] = useState(null);
   const [cargando, setCargando] = useState(true);
 
+  // Al arrancar, consultamos al servidor si ya hay un usuario logueado
   useEffect(() => {
     fetch('https://proyectorecetas.onrender.com/usuario', { credentials: 'include' })
       .then(respuesta => respuesta.ok ? respuesta.json() : null)
       .then(data => {
+        // Si hay sesión activa, guarda el usuario.
         if (data?.usuario) {
           setUsuarioLogueado(data.usuario);
         }
@@ -21,8 +23,10 @@ function Main() {
   }, []);
   
 
-  if (cargando) return <p style={{ textAlign: "center" }}>Cargando sesión...</p>;
+  if (cargando) return <p className="abriendoCocina">🔑 ...Abriendo cocina... 🫕</p>;
 
+  // Si el usuario está logueado, carga la app (App.jsx).
+  // Si no, lo manda al login (Login.jsx).
   return (
     <StrictMode>
       <Router>
@@ -40,4 +44,3 @@ function Main() {
 }
 
 createRoot(document.getElementById("root")).render(<Main />);
-

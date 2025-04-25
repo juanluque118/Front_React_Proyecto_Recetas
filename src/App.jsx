@@ -2,12 +2,16 @@ import { useState, useEffect } from 'react';
 import Crear from './Crear';
 import Receta from './Receta';
 
+// Guarda todas las recetas cargadas.
+// Guarda si el formulario de crear receta está abierto o no.
+// Guarda que categoría está filtrando.
 function App({ usuarioLogueado, setUsuarioLogueado }) {
   const [recetas, setRecetas] = useState([]);
   const [formVisible, setFormVisible] = useState(false);
   const [cargando, setCargando] = useState(true);
   const [categoriaSeleccionada, setCategoriaSeleccionada] = useState("todas");
 
+  // Si el usuario está logueado, carga sus recetas desde el servidor.
   useEffect(() => {
     if (usuarioLogueado) {
       fetch("https://proyectorecetas.onrender.com/recetas", {credentials : 'include'})
@@ -18,6 +22,8 @@ function App({ usuarioLogueado, setUsuarioLogueado }) {
         });
     }
   }, [usuarioLogueado]);
+
+  //Funciones para modificar el listado de recetas en el estado
 
   function crearReceta(receta) {
     setRecetas([...recetas, receta]);
@@ -42,7 +48,7 @@ function App({ usuarioLogueado, setUsuarioLogueado }) {
     <div>
       <h1 className="titulo">La cocina de {usuarioLogueado}</h1>
        <button className="botonCrear" onClick={() => setFormVisible(!formVisible)}>
-          +
+          <i class="fas fa-plus"></i>
           <span className='mensajeCrear'>Crear</span>
         </button>
         

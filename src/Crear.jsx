@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-function Crear({crearReceta,visible, setFormVisible}) {
+function Crear({crearReceta,visible,setFormVisible}) {
 
     let [textoInput,setTextoInput] = useState("")
     let [textoIngredientes,setTextoIngredientes] = useState("")
@@ -9,6 +9,9 @@ function Crear({crearReceta,visible, setFormVisible}) {
     let [imagen, setImagen] = useState(null);
     let [msgError,setMsgError] = useState("No se ha podido crear la receta. Vuelve a intentarlo")
     let [error,setError] = useState(false)
+
+    // Al enviar el form, se crea un objeto FormData con todos los campos y se envia como POST.
+    // Si OK, se agrega la nueva receta a la lista.
  
   return (
     <>
@@ -33,7 +36,7 @@ function Crear({crearReceta,visible, setFormVisible}) {
                 .then(respuesta => respuesta.json())
                 .then(({id,img,error}) => {
                     if(!error){
-                        crearReceta({id, receta: textoInput.trim(), ingredientes: textoIngredientes.trim(), elaboracion:textoElaboracion.trim(), img: img || "/uploads/default.png", categoria: categoria })
+                        crearReceta({id, receta: textoInput.trim(), ingredientes: textoIngredientes.trim(), elaboracion:textoElaboracion.trim(), img: img , categoria: categoria })
                         
                         setTextoInput("")
                         setTextoIngredientes("")
