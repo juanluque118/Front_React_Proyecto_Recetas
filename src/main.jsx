@@ -23,7 +23,7 @@ function Main() {
   }, []);
   
 
-  if (cargando) return <p className="abriendoCocina">🔑 ...Abriendo cocina... 🫕</p>;
+  if (cargando) return <p className="abriendoCocina">🔑 ...Abriendo cocina... 🚪</p>;
 
   // Si el usuario está logueado, carga la app (App.jsx).
   // Si no, lo manda al login (Login.jsx).
