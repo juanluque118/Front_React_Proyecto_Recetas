@@ -25,14 +25,14 @@ function Login({ setUsuarioLogueado, usuarioLogueado }) {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           //Aqui he hecho que el usuario lo envie al backend en minuscula para acceder mas rapido desde el movil ya que por defecto me va a escribir la primera en mayuscula
-          body: JSON.stringify({ usuario: usuario.toLocaleLowerCase(), contraseña }),
+          body: JSON.stringify({ usuario: usuario.toLowerCase(), contraseña }),
           credentials: 'include'
         });
 
         //Si todo sale bien, guarda el usuario en el estado (setUsuarioLogueado) y redirige a /recetas.
         //Guargo el usuario en minuscula para que en la base de datos se envie usuarioID en minuscula siempre.
         if (respuesta.ok) {
-          setUsuarioLogueado(usuario.toLocaleLowerCase);
+          setUsuarioLogueado(usuario ? usuario.toLocaleLowerCase() : "");
           navigate('/recetas');
         } else {
           const data = await respuesta.json();
