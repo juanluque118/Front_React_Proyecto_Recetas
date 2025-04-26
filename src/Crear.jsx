@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-function Crear({crearReceta,visible,setFormVisible}) {
+function Crear({crearReceta,visible,setFormVisible, usuarioLogueado}) {
 
     let [textoInput,setTextoInput] = useState("")
     let [textoIngredientes,setTextoIngredientes] = useState("")
@@ -27,6 +27,7 @@ function Crear({crearReceta,visible,setFormVisible}) {
                 formData.append("elaboracion", textoElaboracion.trim());
                 formData.append("categoria", categoria);
                 formData.append("img", imagen);
+                formData.append("usuarioID", usuarioLogueado); // <-- Añado manualmente el usuario
           
                 fetch("https://proyectorecetas.onrender.com/recetas/nueva", {
                   method: "POST",

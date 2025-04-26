@@ -3,7 +3,7 @@ import Crear from './Crear';
 import Receta from './Receta';
 
 // Guarda todas las recetas cargadas.
-// Guarda si el formulario de crear receta está abierto o no.
+// Guarda si el formulario de crear receta está abierto o no. Controla el "Cargando..."
 // Guarda que categoría está filtrando.
 function App({ usuarioLogueado, setUsuarioLogueado }) {
   const [recetas, setRecetas] = useState([]);
@@ -12,9 +12,10 @@ function App({ usuarioLogueado, setUsuarioLogueado }) {
   const [categoriaSeleccionada, setCategoriaSeleccionada] = useState("todas");
 
   // Si el usuario está logueado, carga sus recetas desde el servidor.
+  // Uso credentials: 'include' para enviar las cookies de sesión.
   useEffect(() => {
     if (usuarioLogueado) {
-      fetch("https://proyectorecetas.onrender.com/recetas", {credentials : 'include'})
+      fetch(`https://proyectorecetas.onrender.com/recetas?usuarioID=${usuarioLogueado}`, { credentials: 'include' })
         .then((respuesta) => respuesta.json())
         .then((recetas) => {
           setRecetas(recetas);
@@ -76,7 +77,7 @@ function App({ usuarioLogueado, setUsuarioLogueado }) {
         </button>
       </div>
 
-      <Crear crearReceta={crearReceta} visible={formVisible} setFormVisible={setFormVisible} />
+      <Crear crearReceta={crearReceta} visible={formVisible} setFormVisible={setFormVisible} usuarioLogueado={usuarioLogueado} />
 
       {cargando ? (
         <p className="cargando"> Cocinando...🍳</p>
