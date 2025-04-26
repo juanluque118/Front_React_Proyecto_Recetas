@@ -30,8 +30,9 @@ function Login({ setUsuarioLogueado, usuarioLogueado }) {
         });
 
         //Si todo sale bien, guarda el usuario en el estado (setUsuarioLogueado) y redirige a /recetas.
+        //Guargo el usuario en minuscula para que en la base de datos se envie usuarioID en minuscula siempre.
         if (respuesta.ok) {
-          setUsuarioLogueado(usuario);
+          setUsuarioLogueado(usuario.toLocaleLowerCase);
           navigate('/recetas');
         } else {
           const data = await respuesta.json();
