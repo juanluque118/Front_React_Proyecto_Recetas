@@ -5,13 +5,14 @@ import Receta from './Receta';
 // Guarda todas las recetas cargadas.
 // Guarda si el formulario de crear receta está abierto o no. Controla el "Cargando..."
 // Guarda que categoría está filtrando.
+//La funcion recibe dos props, para guardar el usuario logueado y para actualizarlo al cambiar de usuario
 function App({ usuarioLogueado, setUsuarioLogueado }) {
   const [recetas, setRecetas] = useState([]);
   const [formVisible, setFormVisible] = useState(false);
   const [cargando, setCargando] = useState(true);
   const [categoriaSeleccionada, setCategoriaSeleccionada] = useState("todas");
 
-  // Si el usuario está logueado, carga sus recetas desde el servidor.
+  // Si el usuario está logueado, carga sus recetas desde el servidor enviando el usuarioID como parámetro en la URL.
   // Uso credentials: 'include' para enviar las cookies de sesión.
   useEffect(() => {
     if (usuarioLogueado) {
@@ -45,6 +46,7 @@ function App({ usuarioLogueado, setUsuarioLogueado }) {
     );
   }
 
+  // Aqui he preparado que las recetas se muestren en orden alfabetico y que se puedan filtrar por categorias
   return (
     <div>
       <h1 className="titulo">La cocina de {usuarioLogueado}</h1>
