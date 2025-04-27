@@ -22,18 +22,18 @@ h1.titulo {
 
 /*Botón para crear nueva receta*/
 .botonCrear {
-  background-color: #7b4a25;
-  color: white;
-  border: none;
-  border-radius: 50%;
+  position: absolute;
+  top: 10px;
+  left: 15px;
   width: 3rem;
   height: 3rem;
+  border: none;
+  border-radius: 50%;
+  background-color: #7b4a25;
+  color: white;
   font-size: 2rem;
   cursor: pointer;
   box-shadow: 0 0 12px 3px rgb(0 0 0 / 33%);
-  position: absolute;
-  left: 15px;
-  top: 10px;
 }
 .botonCrear:hover{
   background-color: #5e371d;
@@ -49,10 +49,6 @@ h1.titulo {
   align-items: center;
   flex-direction: column;
   height: 70vh;
-}
-
-.login form{
-  display: contents;
 }
 
 .login h1{
