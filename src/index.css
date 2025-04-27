@@ -51,6 +51,12 @@ h1.titulo {
   height: 70vh;
 }
 
+.login form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .login h1{
   margin-bottom: 10px;
 }
